@@ -44,7 +44,6 @@ function knightNode(start) {
     move7: null,
     move8: null,
   }
-  //moves must be nodes
 }
 
 function knightMoves(start) {
@@ -86,29 +85,33 @@ function knightMoves(start) {
   return [move1, move2, move3, move4, move5, move6, move7, move8]
 }
 
-function buildTree(start) {
+function buildTree(start, maxDepth) {
+  maxDepth--
   const node = new knightNode(start)
-  node.move1 = knightMoves(start)[0]
-  node.move2 = knightMoves(start)[1]
-  node.move3 = knightMoves(start)[2]
-  node.move4 = knightMoves(start)[3]
-  node.move5 = knightMoves(start)[4]
-  node.move6 = knightMoves(start)[5]
-  node.move7 = knightMoves(start)[6]
-  node.move8 = knightMoves(start)[7]
+  const moves = knightMoves(start)
 
+  if (maxDepth > 0) {
+    node.move1 = buildTree(moves[0], maxDepth)
+    node.move2 = buildTree(moves[1], maxDepth)
+    node.move3 = buildTree(moves[2], maxDepth)
+    node.move4 = buildTree(moves[3], maxDepth)
+    node.move5 = buildTree(moves[4], maxDepth)
+    node.move6 = buildTree(moves[5], maxDepth)
+    node.move7 = buildTree(moves[6], maxDepth)
+    node.move8 = buildTree(moves[7], maxDepth)
+  }
   return node
 }
 
 function Tree(start) {
   return {
-    root: buildTree(start),
+    root: buildTree(start, 5)
   }
 }
 
 function driver() {
   const tree = Tree(["D", 4])
-  return tree
+  return tree.root
   //return knightNode(['D', 4])
   /* const board = gameboard()
   const createdKnight = insertKnight(board, "D", 5)
