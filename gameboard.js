@@ -22,7 +22,7 @@ function knight(positionX, positionY) {
     positionY: positionY,
 
     getPosition: function () {
-      return `Current position: ` + positionX + positionY
+      return [positionX, positionY]
     },
   }
 }
@@ -32,14 +32,67 @@ function insertKnight(board, letterCoordinate, numberCoordinate) {
   return knight(letterCoordinate, numberCoordinate)
 }
 
+function knightNode(start) {
+    return {
+        root: start,
+        move1: move1,
+        move2: move2,
+        move3: move3,
+        move4: move4,
+        move5: move5,
+        move6: move6,
+        move7: move7,
+        move8: move8
+    }
+}
+
+function knightMoves(start) {
+    const startX = start[0]
+    const startY = start[1]
+    
+    const moveX1 = String.fromCharCode(startX.charCodeAt(0) - 2)
+    const moveY1 = startY + 1
+    const move1 = [moveX1, moveY1]
+
+    const moveX2 = String.fromCharCode(startX.charCodeAt(0) - 2)
+    const moveY2 = startY - 1
+    const move2 = [moveX2, moveY2]
+
+    const moveX3 = String.fromCharCode(startX.charCodeAt(0) + 2)
+    const moveY3 = startY - 1
+    const move3 = [moveX3, moveY3]
+
+    const moveX4 = String.fromCharCode(startX.charCodeAt(0) + 2)
+    const moveY4 = startY + 1
+    const move4 = [moveX4, moveY4]
+
+    const moveX5 = String.fromCharCode(startX.charCodeAt(0) - 1)
+    const moveY5 = startY + 2
+    const move5 = [moveX5, moveY5]
+
+    const moveX6 = String.fromCharCode(startX.charCodeAt(0) - 1)
+    const moveY6 = startY - 2
+    const move6 = [moveX6, moveY6]
+
+    const moveX7 = String.fromCharCode(startX.charCodeAt(0) + 1)
+    const moveY7 = startY - 2
+    const move7 = [moveX7, moveY7]
+
+    const moveX8 = String.fromCharCode(startX.charCodeAt(0) + 1)
+    const moveY8 = startY + 2
+    const move8 = [moveX8, moveY8]
+
+    return [move1, move2, move3, move4, move5, move6, move7, move8]
+}
+
 function driver() {
   const board = gameboard()
   const createdKnight = insertKnight(board, "D", 5)
   console.log(createdKnight.getPosition())
-  //board[7]['H'].push('knight')
   console.log(board)
 }
 
 module.exports = {
   z: driver,
+  y: knightMoves
 }
