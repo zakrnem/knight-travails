@@ -1,0 +1,23 @@
+Chessboard: 8x8 grid
+
+Console print:
+········
+········
+········
+········
+········
+········
+········
+········
+
+Data structure:
+const gameBoard = {
+    1: [A, B, C, D, E, F, G, H]
+    2: [A, B, C, D, E, F, G, H]
+    3: [A, B, C, D, E, F, G, H]
+    4: [A, B, C, D, E, F, G, H]
+    5: [A, B, C, D, E, F, G, H]
+    6: [A, B, C, D, E, F, G, H]
+    7: [A, B, C, D, E, F, G, H]
+    8: [A, B, C, D, E, F, G, H]
+}
