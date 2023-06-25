@@ -3,8 +3,8 @@ const y = require("./knightInsert.js")
 const w = require("./knightMoves.js")
 
 function knightNode(start, board) {
-  y.insertKnight(board, start)
-  console.log('Board: ', board)
+  /* y.insertKnight(board, start)
+  console.log('Board: ', board) */
   return {
     root: start,
     move1: null,
@@ -41,9 +41,9 @@ function buildTree(start, maxDepth, board) {
 }
   
   function Tree(start) {
-    const board = z.gameboard()
+    //const board = z.gameboard()
     return {
-      root: buildTree(start, 5, board),
+      root: buildTree(start, 5, /* board */),
     }
   }
 

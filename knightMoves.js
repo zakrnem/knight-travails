@@ -49,5 +49,4 @@ function checkMoves(moveX, moveY) {
 
 module.exports = {
     knightMoves: knightMoves,
-    checkMoves: checkMoves,
 }
