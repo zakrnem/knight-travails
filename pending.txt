@@ -21,3 +21,6 @@ const gameBoard = {
     7: [A, B, C, D, E, F, G, H]
     8: [A, B, C, D, E, F, G, H]
 }
+
+Separate modules
+Create a f() for printing already visited cells
