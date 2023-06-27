@@ -1,1 +1,2 @@
-+ Create function for getting the shortest path between two gameboard cells
++ Create function for getting the shortest path between two gameboard cells.
+    Level order might the fastest traversal to finding the shortest path.

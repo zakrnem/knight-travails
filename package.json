@@ -1,0 +1,22 @@
+{
+  "name": "knight-travails",
+  "version": "0.1.0",
+  "description": "Knight Travails project for \"The Odin Project\"",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zakrnem/knight-travails.git"
+  },
+  "author": "zakrnem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zakrnem/knight-travails/issues"
+  },
+  "homepage": "https://github.com/zakrnem/knight-travails#readme",
+  "devDependencies": {
+    "jest": "^29.5.0"
+  }
+}
