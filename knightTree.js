@@ -17,7 +17,7 @@ function knightNode(start, board) {
     move8: null,
   }
 }
-  
+
 function buildTree(start, maxDepth, board) {
   maxDepth--
   const node = new knightNode(start, board)
@@ -39,14 +39,14 @@ function buildTree(start, maxDepth, board) {
     return node
   }
 }
-  
-  function Tree(start) {
-    //const board = z.gameboard()
-    return {
-      root: buildTree(start, 5, /* board */),
-    }
+
+function Tree(start) {
+  //const board = z.gameboard()
+  return {
+    root: buildTree(start, 5 /* board */),
   }
+}
 
 module.exports = {
-    knightTree: Tree,
+  knightTree: Tree,
 }
