@@ -13,3 +13,4 @@ It isn't feasible to get the whole levelOrder traversal and then look for the in
         But how would this travesal translate into getting the required path?
             Instead of returning a simple array we would've to return a more complex object, that facilitates reconstructing the path.
             The object would be reset when changing children trees so you store only the desired path.
+

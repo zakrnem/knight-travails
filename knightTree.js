@@ -40,7 +40,7 @@ function buildTree(start, maxDepth, board) {
 
 function Tree(start) {
   return {
-    root: buildTree(start, 7),
+    root: buildTree(start, 2),
   }
 }
 
