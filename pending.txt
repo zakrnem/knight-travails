@@ -1,16 +1,8 @@
 + Create function for getting the shortest path between two gameboard cells.
     Level order might the fastest traversal to finding the shortest path.
 
-Questions:
-A knight can take up to 63 moves to cover the whole chessboard, this is the worst case scenary.
-Currently executing the f() for 8 moves takes more than 2 minutes (500k plus operations).
-It isn't feasible to get the whole levelOrder traversal and then look for the index of the desired coordinates.
-    How would we find the path between that array item and the root?
-        We could stop the levelOrder traversal when the desired coordinate is found.
-        That find function should return the depth.
-        Then we would run another traversal until reaching that level or finding the desired node.
-        We would have to choose between preorder (seems more likely) and postorder traversal.
-        But how would this travesal translate into getting the required path?
-            Instead of returning a simple array we would've to return a more complex object, that facilitates reconstructing the path.
-            The object would be reset when changing children trees so you store only the desired path.
 
+Find the soughtOrdinate with BFS, stop the search when the desired node is found.
+Push the desired node into a path array.
+Get the predecessor, push it into the path array.
+Iterate until predecessor is equal to null.

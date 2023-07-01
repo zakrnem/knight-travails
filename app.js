@@ -4,10 +4,10 @@ const y = require('./knightInsert.js')
 //Return knight moves tree
 function driver() {
   const tree = x.knightTree(['D', 4])
-  return tree.root.move3/*.move5.move6.move1.root*/
+  return tree.root.move1.move4/*.move6.move1*/.root
 }
 
-function levelOrder(tree, soughtCoordinate) {
+/* function levelOrder(tree, soughtCoordinate) {
   let queue = []
   let output = []
   let path = []
@@ -20,9 +20,15 @@ function levelOrder(tree, soughtCoordinate) {
       if (current !== null) {
         const currentString = JSON.stringify(current.root)
         const soughtString = JSON.stringify(soughtCoordinate)
-        if (currentString === soughtString) return 'Found'
+        if (currentString === soughtString) {
+          while (current.predecessor !== undefined) {
+            path.unshift(current.root)
+            current = current.predecessor
+            path.unshift(current.predecessor.root)
+          }
+          return path
+        }
         output.push(current.root)
-        //let booleanFound = 0
 
         if (current.move1 !== null) queue.push(current.move1)
         if (current.move2 !== null) queue.push(current.move2)
@@ -37,9 +43,51 @@ function levelOrder(tree, soughtCoordinate) {
     }
     return output
   }
+} */
+
+function findNode(tree, soughtCoordinate) {
+  let queue = []
+
+  if (tree.root !== null) {
+    queue.push(tree)
+
+    while (queue.length > 0) {
+      let current = queue.shift()
+      if (current !== null) {
+        const currentString = JSON.stringify(current.root)
+        const soughtString = JSON.stringify(soughtCoordinate)
+        if (currentString === soughtString) return current
+
+        if (current.move1 !== null) queue.push(current.move1)
+        if (current.move2 !== null) queue.push(current.move2)
+        if (current.move3 !== null) queue.push(current.move3)
+        if (current.move4 !== null) queue.push(current.move4)
+        if (current.move5 !== null) queue.push(current.move5)
+        if (current.move6 !== null) queue.push(current.move6)
+        if (current.move7 !== null) queue.push(current.move7)
+        if (current.move8 !== null) queue.push(current.move8)
+      }
+    }
+    return null
+  }
 }
 
-function findPath(tree, soughtCoordinate, pathArray) {
+function findPath(tree, soughtCoordinate, path) {
+  const node = findNode(tree, soughtCoordinate)
+  
+  if (node !== null) {
+    path.unshift(node.root)
+    if (node.predecessor !== null) {
+      return findPath(tree, node.predecessor, path)
+    } else {
+      return path
+    }
+  } else {
+    return path
+  }
+}
+
+/* function findPath(tree, soughtCoordinate, pathArray) {
   if (tree !== null) {
     const rootString = JSON.stringify(tree.root);
     const soughtString = JSON.stringify(soughtCoordinate);
@@ -52,15 +100,6 @@ function findPath(tree, soughtCoordinate, pathArray) {
       pathArray.push(tree.root);
       return pathArray
     } else {
-      const newPathArray1 = [...pathArray];
-      const newPathArray2 = [...pathArray];
-      const newPathArray3 = [...pathArray];
-      const newPathArray4 = [...pathArray];
-      const newPathArray5 = [...pathArray];
-      const newPathArray6 = [...pathArray];
-      const newPathArray7 = [...pathArray];
-      const newPathArray8 = [...pathArray];
-
       const result1 = findPath(tree.move1, soughtCoordinate, newPathArray1);
       const result2 = findPath(tree.move2, soughtCoordinate, newPathArray2);
       const result3 = findPath(tree.move3, soughtCoordinate, newPathArray3);
@@ -69,42 +108,25 @@ function findPath(tree, soughtCoordinate, pathArray) {
       const result6 = findPath(tree.move6, soughtCoordinate, newPathArray6);
       const result7 = findPath(tree.move7, soughtCoordinate, newPathArray7);
       const result8 = findPath(tree.move8, soughtCoordinate, newPathArray8);
-
-      if (result1.length > 0) {
-        return result1;
-      } else if (result2.length > 0) {
-        return result2;
-      } else if (result3.length > 0) {
-        return result3;
-      } else if (result4.length > 0) {
-        return result4;
-      } else if (result5.length > 0) {
-        return result5;
-      } else if (result6.length > 0) {
-        return result6;
-      } else if (result7.length > 0) {
-        return result7;
-      } else if (result8.length > 0) {
-        return result8;
-      }
     }
   } else {
     return pathArray
   }
-}
+} */
 
 
-function testPathFind() {
+/* function testPathFind() {
   const tree = x.knightTree(['D', 4])
   //return tree.root
   return findPath(tree.root, ['E', 2], [])
-}
+} */
 
 function test() {
   console.time()
   const tree = x.knightTree(['D', 4])
   //console.log(tree.root.move1)
-  let result = levelOrder(tree.root, ['B', 5])
+  //let result = findPath(tree.root, ['D', 6], [])
+  let result = findPath(tree.root, ['D', 3], [])
   console.timeEnd()
   return result
 }
@@ -112,5 +134,5 @@ function test() {
 module.exports = {
   z: driver,
   test: test,
-  path: testPathFind
+  //path: testPathFind
 }
