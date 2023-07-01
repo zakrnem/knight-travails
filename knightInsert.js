@@ -1,4 +1,4 @@
-const x = require("./gameboard.js")
+const x = require('./gameboard.js')
 
 function knight(positionX, positionY) {
   return {

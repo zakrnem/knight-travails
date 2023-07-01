@@ -6,11 +6,11 @@ function gameboard(board, positionArr) {
       chessboard[row] = {}
 
       for (
-        let column = "A";
-        column <= "H";
+        let column = 'A';
+        column <= 'H';
         column = String.fromCharCode(column.charCodeAt(0) + 1)
       ) {
-        chessboard[row][column] = "_"
+        chessboard[row][column] = '_'
       }
     }
     return chessboard
@@ -19,7 +19,7 @@ function gameboard(board, positionArr) {
     if (positionArr !== null) {
       const letterCoordinate = positionArr[0]
       const numberCoordinate = positionArr[1]
-      board[numberCoordinate][letterCoordinate] = "k"
+      board[numberCoordinate][letterCoordinate] = 'k'
     }
   }
 }

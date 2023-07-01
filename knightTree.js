@@ -1,10 +1,11 @@
-const z = require("./gameboard.js")
-const y = require("./knightInsert.js")
-const w = require("./knightMoves.js")
+const z = require('./gameboard.js')
+const y = require('./knightInsert.js')
+const w = require('./knightMoves.js')
 
-function knightNode(start, board) {
+function knightNode(start, predecessor) {
   return {
     root: start,
+    predecessor: predecessor,
     move1: null,
     move2: null,
     move3: null,
@@ -16,23 +17,22 @@ function knightNode(start, board) {
   }
 }
 
-function buildTree(start, maxDepth, board) {
+function buildTree(start, maxDepth, predecessor) {
   maxDepth--
-  const node = new knightNode(start, board)
+  const node = new knightNode(start, predecessor)
   const moves = w.knightMoves(start)
-
   if (moves === null) {
     return null
   } else {
     if (maxDepth > 0) {
-      node.move1 = buildTree(moves[0], maxDepth, board)
-      node.move2 = buildTree(moves[1], maxDepth, board)
-      node.move3 = buildTree(moves[2], maxDepth, board)
-      node.move4 = buildTree(moves[3], maxDepth, board)
-      node.move5 = buildTree(moves[4], maxDepth, board)
-      node.move6 = buildTree(moves[5], maxDepth, board)
-      node.move7 = buildTree(moves[6], maxDepth, board)
-      node.move8 = buildTree(moves[7], maxDepth, board)
+      node.move1 = buildTree(moves[0], maxDepth, start)
+      node.move2 = buildTree(moves[1], maxDepth, start)
+      node.move3 = buildTree(moves[2], maxDepth, start)
+      node.move4 = buildTree(moves[3], maxDepth, start)
+      node.move5 = buildTree(moves[4], maxDepth, start)
+      node.move6 = buildTree(moves[5], maxDepth, start)
+      node.move7 = buildTree(moves[6], maxDepth, start)
+      node.move8 = buildTree(moves[7], maxDepth, start)
     }
     return node
   }
@@ -40,7 +40,7 @@ function buildTree(start, maxDepth, board) {
 
 function Tree(start) {
   return {
-    root: buildTree(start, 2),
+    root: buildTree(start, 7),
   }
 }
 
